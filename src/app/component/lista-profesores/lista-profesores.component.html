@@ -1,0 +1,27 @@
+<h2>Lista de Profesores</h2>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Asignatura</th>
+            <th>Universidad</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let profesor of profesores">
+            <td>{{profesor.nombre}}</td>
+            <td>{{profesor.apellido}}</td>
+            <td>{{profesor.asignatura}}</td>
+            <td>{{profesor.universidad}}</td>
+            <td>
+                <button (click)="modificarProfesor(profesor.id)" class="btn btn-info">Modificar</button>
+                <button (click)="eliminarProfesor(profesor.id)" class="btn btn-danger" style="margin-left: 5px;">Eliminar</button>
+                <button (click)="detallesProfesor(profesor.id)" class="btn btn-success" style="margin-left: 5px;">Detalles</button>
+
+            </td>
+            
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,43 @@
+<div class="col-md-6 offset-md-3">
+    <h3 class="text-center">Modificar Profesor</h3>
+    <form >
+        <div class="form-group">
+            <label for="">Nombre:</label>
+            <input type="text"
+            class="form-control"
+            id="nombre"
+            [(ngModel)] = "profesor.nombre"
+            name="nombre"
+            >            
+        </div>
+        <div class="form-group">
+            <label for="">Apellido:</label>
+            <input type="text"
+            class="form-control"
+            id="apellido"
+            [(ngModel)] = "profesor.apellido"
+            name="apellido"
+            >            
+        </div>
+        <div class="form-group">
+            <label for="">Asignatura:</label>
+            <input type="text"
+            class="form-control"
+            id="asignatura"
+            [(ngModel)] = "profesor.asignatura"
+            name="asignatura"
+            >            
+        </div>
+        <div class="form-group">
+            <label for="">Universidad:</label>
+            <input type="text"
+            class="form-control"
+            id="universidad"
+            [(ngModel)] = "profesor.universidad"
+            name="universidad"
+            >            
+        </div>
+
+        <button (click)="datosModificados(profesor)" class="btn btn-success mt-2">Modificar</button>
+    </form>
+</div>
