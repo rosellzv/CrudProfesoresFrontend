@@ -4,4 +4,5 @@ export class Profesor {
     apellido : string;
     asignatura : string;
     universidad : string;
+    edad : number;
 }

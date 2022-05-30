@@ -10,6 +10,7 @@ export class ProfesorService {
 
   //Url del listado de los profesores
   private baseURL = "http://localhost:8080/profesores";
+  private baseURLMessage = "http://localhost:8080/profesores/message";
   constructor(private httpClient : HttpClient) { }
 
   obtenerListaDeProfesores():Observable<Profesor[]>{
@@ -29,5 +30,9 @@ export class ProfesorService {
   }
   buscarProfesor(id:Number):Observable<Profesor>{
     return this.httpClient.get<Profesor>(`${this.baseURL}/${id}`);
+  }
+
+  buscarMensaje():Observable<String>{
+    return this.httpClient.get<String>(`${this.baseURLMessage}`);
   }
 }

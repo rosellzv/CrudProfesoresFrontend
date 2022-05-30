@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Profesor } from 'src/app/profesor';
 import { ProfesorService } from 'src/app/service/profesor.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-actualizar-profesor',
@@ -24,14 +25,35 @@ export class ActualizarProfesorComponent implements OnInit {
     })
   }
 
-  datosModificados(profesor: Profesor){    
-    this.profesorService.modificarProfesor(this.profesor.id,this.profesor).subscribe(dato =>{
-      console.log(dato);
-      this.irListaProfesores();
-    })
+  datosModificados(profesor: Profesor){   
+    const {id,nombre,apellido,asignatura,universidad,edad} = profesor;
+    console.log(profesor);
+    if(nombre ==null || apellido==null || asignatura == null || universidad == null || edad == null)
+    {
+      
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Faltan campos por llenar!'        
+      })
+      this.errorUpdateProfesor(id);
+    } else{
+
+      this.profesorService.modificarProfesor(this.profesor.id,this.profesor).subscribe(dato =>{        
+        this.irListaProfesores();
+        Swal.fire({
+        icon: 'success',
+        title: 'Correcto',
+        text: 'Se modificaron los datos correctamente!'        
+      })
+      })
+    }
   }
   irListaProfesores(){
     this.router.navigate(['/profesor']);
+  }
+  errorUpdateProfesor(id:number){
+    this.router.navigate(['modificar_profesor',id])
   }
 
 }

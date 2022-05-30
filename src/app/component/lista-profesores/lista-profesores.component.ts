@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Profesor } from 'src/app/profesor';
 import { ProfesorService } from 'src/app/service/profesor.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-lista-profesores',
@@ -20,6 +21,12 @@ export class ListaProfesoresComponent implements OnInit {
     this.profesorServicio.eliminarProfesor(id).subscribe(dato =>{
       console.log(dato);
       this.obtenerProfesores();
+      Swal.fire({
+        icon: 'success',
+        title: 'Bien hecho',
+        text: 'Se elimino correctamente el profesor!'        
+      })
+      
     })
   }
   private obtenerProfesores(){
@@ -33,6 +40,10 @@ export class ListaProfesoresComponent implements OnInit {
   }
   modificarProfesor(id: number){
     this.router.navigate(['modificar_profesor',id]);
+  }
+
+  adicionar_profesor(){
+    this.router.navigate(['adicionar_profesor']);
   }
 
   

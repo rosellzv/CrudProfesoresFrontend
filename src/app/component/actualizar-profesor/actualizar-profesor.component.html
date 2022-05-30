@@ -1,43 +1,138 @@
 <div class="col-md-6 offset-md-3">
     <h3 class="text-center">Modificar Profesor</h3>
     <form >
-        <div class="form-group">
+        <div class="form-group mt-2">
             <label for="">Nombre:</label>
             <input type="text"
             class="form-control"
             id="nombre"
             [(ngModel)] = "profesor.nombre"
             name="nombre"
-            >            
+            required
+            placeholder="Ingrese el nombre"
+            pattern="^[A-Za-z]+\s?[A-Za-z]+?\s?[A-Za-z]+?\s?[A-Za-z]+?\s?$"
+            minlength="2"
+            maxlength="15"
+            #nombre = "ngModel"
+            >  
+            <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                <div *ngIf="nombre.errors?.['required']">
+                    Debe llenar el campo nombre!!
+                </div>
+                <div *ngIf="nombre.errors?.['minlength']">
+                    El nombre debe tener mas de 2 caracteres!
+                </div>  
+                <div *ngIf="nombre.errors?.['pattern']">
+                    El campo no debe contener numeros ni mas de un espacio entre ellos!!
+                </div>              
+            </div>
+                
+                    
         </div>
-        <div class="form-group">
+        <div class="form-group mt-2">
             <label for="">Apellido:</label>
             <input type="text"
             class="form-control"
             id="apellido"
             [(ngModel)] = "profesor.apellido"
             name="apellido"
-            >            
+            required
+            placeholder="Ingrese los apellidos"
+            pattern="^[A-Za-z]+\s?[A-Za-z]+?\s?[A-Za-z]+?\s?[A-Za-z]+?\s?[A-Za-z]+?\s?$"
+            minlength="2"
+            maxlength="15"
+            #apellido = "ngModel"
+            >    
+            <div class="alert alert-danger" *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
+                <div *ngIf="apellido.errors?.['required']">
+                    Debe llenar el campo apellido!!
+                </div>
+                <div *ngIf="apellido.errors?.['minlength']">
+                    El apellido debe tener mas de 2 caracteres!
+                </div> 
+                <div *ngIf="apellido.errors?.['pattern']">
+                    El campo no debe contener numeros ni mas de un espacio entre ellos!!
+                </div>               
+            </div>
+                        
         </div>
-        <div class="form-group">
+        <div class="form-group mt-2">
             <label for="">Asignatura:</label>
             <input type="text"
             class="form-control"
             id="asignatura"
             [(ngModel)] = "profesor.asignatura"
             name="asignatura"
-            >            
+            required
+            placeholder="Ingrese la asignatura que imparte"
+            pattern="^[A-Za-z]+\s?[A-Za-z]+?\s?[A-Za-z]+?\s?[A-Za-z]+?\s?[A-Za-z]+?\s?[A-Za-z]+?\s?[A-Za-z]+?\s?[A-Za-z]+?\s?$"
+            minlength="3"
+            maxlength="25"
+            #asignatura = "ngModel"
+            >     
+            <div class="alert alert-danger" *ngIf="asignatura.invalid && (asignatura.dirty || asignatura.touched)">
+                <div *ngIf="asignatura.errors?.['required']">
+                    Debe llenar el campo asignatura!!
+                </div>
+                <div *ngIf="asignatura.errors?.['minlength']">
+                    La asignatura debe tener mas de 2 caracteres!
+                </div>
+                <div *ngIf="asignatura.errors?.['pattern']">
+                    El campo no debe contener numeros ni mas de un espacio entre ellos!!
+                </div>                
+            </div>      
+                       
         </div>
-        <div class="form-group">
+        <div class="form-group mt-2">
             <label for="">Universidad:</label>
             <input type="text"
             class="form-control"
             id="universidad"
             [(ngModel)] = "profesor.universidad"
             name="universidad"
-            >            
+            required
+            placeholder="Ingrese la universidad donde pertenece"
+            pattern="^[A-Za-z]+\s?[A-Za-z]+?\s?[A-Za-z]+?\s?[A-Za-z]+?\s?[A-Za-z]+?\s?[A-Za-z]+?\s?[A-Za-z]+?\s?[A-Za-z]+?\s?$"
+            minlength="3"
+            maxlength="55"
+            #universidad = "ngModel"
+            >     
+            <div class="alert alert-danger" *ngIf="universidad.invalid && (universidad.dirty || universidad.touched)">
+                <div *ngIf="universidad.errors?.['required']">
+                    Debe llenar el campo universidad!!
+                </div>
+                <div *ngIf="universidad.errors?.['minlength']">
+                    El nombre de la universidad debe tener mas de 2 caracteres!
+                </div>      
+                <div *ngIf="universidad.errors?.['pattern']">
+                    El campo no debe contener numeros ni mas de un espacio entre ellos!!
+                </div>          
+            </div>
+                        
+        </div>
+        <div class="form-group mt-2">
+            <label for="">Edad:</label>
+            <input type="number"
+            class="form-control"
+            id="edad"
+            [(ngModel)] = "profesor.edad"
+            name="edad"
+            placeholder="Ingrese la edad"
+            pattern="\d\d"
+            required            
+            #edad = "ngModel"            
+            >  
+            <div class="alert alert-danger" *ngIf="edad.invalid && (edad.dirty || edad.touched)">
+                <div *ngIf="edad.errors?.['required']">
+                    Debe llenar el campo edad!!
+                </div>                
+                <div *ngIf="edad.errors?.['pattern']">
+                    No cumple con el formato esperado!!
+                </div>               
+            </div>
+                        
         </div>
 
-        <button (click)="datosModificados(profesor)" class="btn btn-success mt-2">Modificar</button>
+        <button (click)="datosModificados(profesor)" class="btn btn-success mt-2">Guardar Cambios</button>
     </form>
 </div>
